@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int GetNumOfCharacters(string str1)
+{
+    return str1.length();
+}
+
+string OutputWithoutWhitespace(string str1)
+{
+    int i = 0;
+    int j = 0;
+
+    for (i=0; str1[i] != '\0'; ++i) {
+		if(str1[i] == ' ')
+            str1.erase(i, 1);
+		    str1[j++]=str1[i];
+	}
+	str1[j]='\0';
+    return str1;
+}
+
+int main()
+{
+
+    string str1 = "";
+    string newstring = "";
+
+    //(1) Prompt the user to enter a string of their choosing. Output the string. (1 pt)
+    cout << "Enter a sentence or phrase: ";
+    cout << endl;
+    cout << "You entered: ";
+    getline(cin, str1);
+    cout << str1;
+    cout << endl;
+    cout << endl;
+    cout << "Number of characters: " << GetNumOfCharacters(str1) << endl;
+    cout << "String with no whitespace: " << OutputWithoutWhitespace(str1) << endl;
+
+    return 0;
+}
