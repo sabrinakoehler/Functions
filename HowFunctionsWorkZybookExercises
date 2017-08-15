@@ -1,0 +1,314 @@
+///////////////////////////////////////////////////////////////////////////////
+13.2.1:Functions errors Copying one function to create another Challenge Activity
+Using the CelsiusToKelvin function as a guide, create a new function, changing the
+ name to KelvinToCelsius, and modifying the function accordingly. 
+
+#include <iostream>
+using namespace std;
+
+double CelsiusToKelvin(double valueCelsius) {
+   double valueKelvin = 0.0;
+
+   valueKelvin = valueCelsius + 273.15;
+
+   return valueKelvin;
+}
+
+double KelvinToCelsius(double valueKelvin) {
+   double valueCelsius = 0.0;
+   
+   valueCelsius = valueKelvin - 273.15;
+   
+   return valueCelsius;
+}
+
+int main() {
+   double valueC = 0.0;
+   double valueK = 0.0;
+
+   valueC = 10.0;
+   cout << valueC << " C is " << CelsiusToKelvin(valueC) << " K" << endl;
+
+   valueK = 283.15;
+   cout << valueK << "  is " << KelvinToCelsius(valueK) << " C" << endl;
+
+   return 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+13.3.3: Calculating monetary change. Participation activity.
+Complete the monetary change program. use the fewest coins (i.e., using maximum larger
+coins first).
+
+
+#include <iostream>
+using namespace std;
+
+// FIXME: Add parameters for dimes, nickels, and pennies. 
+void ComputeChange(int totCents, int& numQuarters, int& numDimes, int& numNickels, int& numPennies) {
+
+   numQuarters = totCents / 25;
+   numDimes = totCents / 10;
+   numNickels = totCents / 5;
+   numPennies = totCents / 1;
+
+   return;
+}
+
+int main() {
+   int userCents   = 0;
+   int numQuarters = 0;
+   int numDimes = 0;
+   int numNickels = 0;
+   int numPennies = 0;
+
+   cout << "Enter total cents: " << endl;
+   cin >> userCents;
+
+   cout << "Your monetary change is" << endl;
+
+   ComputeChange(userCents, numQuarters, numDimes, numNickels, numPennies);
+
+   cout << "Quarters: " << numQuarters << endl;
+   cout << "Dimes: " << numDimes << endl;
+   cout << "Nickels: " << numNickels << endl;
+   cout << "Pennies: " << numPennies << endl;
+
+   return 0;
+}
+
+//Not sure if this is correct code^^
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+Reference variables
+13.3.2: Reference variable example. 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+   int usrValInt = 0;
+   int& usrValRef = usrValInt;  // Refers to usrValInt
+
+   cout << "Enter an integer: ";
+   cin  >> usrValInt;
+
+   cout << "We wrote your integer to usrValInt." << endl;
+   cout << "usrValInt is: " << usrValInt << "." << endl;
+   cout << "usrValRef refers to usrValInt, and is: " << usrValRef << "." << endl;
+
+   usrValInt = 99;
+   cout << endl << "We assigned usrValInt with 99." << endl;
+   cout << "usrValInt is now: " << usrValInt << "." << endl;
+   cout << "usrValRef is now: " << usrValRef << "." << endl;
+   cout << "Note that usrValRef refers to usrValInt, so changed too." << endl;
+   return 0;
+}
+OUTPUT:
+Enter an integer: 42
+We wrote your integer to usrValInt.
+usrValInt is: 42.
+usrValRef refers to usrValInt, and is: 42.
+
+We assigned usrValInt with 99.
+usrValInt is now: 99.
+usrValRef is now: 99.
+Note that usrValRef refers to usrValInt, so changed too.
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+13.3.1: Function pass by reference: Transforming coordinates
+Challenge Activity
+Define a function CoordTransform() that transforms its first two input parameters
+xVal and yVal into two output parameters xValNew and yValNew. The function returns 
+void. The transformation is new = (old + 1) * 2. Ex: If xVal = 3 and yVal = 4, then
+ xValNew is 8 and yValNew is 10. 
+
+ #include <iostream>
+using namespace std;
+
+void CoordTransform(int xVal, int yVal, int& xValNew, int& yValNew) {
+   //new = (old + 1)*2
+   xValNew = (xVal + 1) * 2;
+   yValNew = (yVal + 1) * 2;
+   
+return;
+}
+
+int main() {
+   int xValNew = 0;
+   int yValNew = 0;
+
+   CoordTransform(3, 4, xValNew, yValNew);
+   cout << "(3, 4) becomes " << "(" << xValNew << ", " << yValNew << ")" << endl;
+
+   return 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+13.4 Scope of variable/function definitions
+13.4.1: Local variable Scope Example
+
+#include <iostream>
+using namespace std;
+
+const double CM_PER_IN = 2.54;
+const int    IN_PER_FT = 12;
+
+/* Converts a height in feet/inches to centimeters */
+double HeightFtInToCm(int heightFt, int heightIn) {
+   int totIn = 0;
+   double cmVal = 0.0;                                              //Scope
+   
+   totIn = (heightFt * IN_PER_FT) + heightIn; // Total inches       //Scope
+   cmVal = totIn * CM_PER_IN;                 // Conv inch to cm    //Scope
+   return cmVal;                                                    //Scope
+}
+
+int main() {
+   int userFt = 0;  // User defined feet
+   int userIn = 0;  // User defined inches
+   
+   // Prompt user for feet/inches
+   cout << "Enter feet: ";
+   cin >> userFt;
+   
+   cout << "Enter inches: ";
+   cin >> userIn;
+   
+   // Output converted feet/inches to cm result
+   cout << "Centimeters: ";
+   cout << HeightFtInToCm(userFt, userIn) << endl;
+   
+   return 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+13.4.2: A function  declaration allows a function definition to appear later
+in a file.
+
+#include <iostream>
+#include <cmath> // To use "pow" function
+using namespace std;
+
+/* Program to convert given-year U.S. dollars to
+   current dollars, using simplistic method of 4% annual inflation.
+   Source: http://inflationdata.com (See: Historical) */
+
+// (Function DECLARATION)
+double ToCurrDollars (double pastDol, int pastYr, int currYr);
+
+int main() {
+   double pastDol = 0.0;  // Starting dollar amount
+   double currDol = 0.0;  // Ending dollar amount (converted value)
+   int pastYr = 0;        // Starting year
+   int currYr = 0;        // Ending year (converted to year)
+   
+   // Prompt user for previous year/dollar and current year
+   cout << "Enter current year: ";
+   cin >> currYr;
+   cout << "Enter past year: ";
+   cin >> pastYr;
+   cout << "Enter past dollars (Ex: 1000): ";
+   cin >> pastDol;
+   
+   // Function call to convert past to current dollars
+   currDol = ToCurrDollars(pastDol, pastYr, currYr);
+   
+   cout << "$" << pastDol << " in " << pastYr;
+   cout << " is about $" << currDol << " in ";
+   cout << currYr << endl;
+   
+   return 0;
+}
+
+// (Function DEFINITION)
+// Functin returns equivalent value of pastDol in pastYr to currYr
+double ToCurrDollars (double pastDol, int pastYr, int currYr) {
+   double currDol = 0.0;  // Equivalent dollar amount given inflation
+   
+   currDol = pastDol * pow(1.04, currYr - pastYr );
+   
+   return currDol;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+13.5 Warm up: Text analyzer & modifier (C++) Challenge Activity
+(1) Prompt the user to enter a string of their choosing. Output the string. (1 pt) 
+
+Ex:
+
+Enter a sentence or phrase: The only thing we have to fear is fear itself.
+You entered: The only thing we have to fear is fear itself.
+(2) Complete the GetNumOfCharacters() function, which returns the number of characters
+ in the user's string. We encourage you to use a for loop in this function. (2 pts)
+
+(3) In main(), call the GetNumOfCharacters() function and then output the returned result.
+(1 pt)
+
+(4) Implement the OutputWithoutWhitespace() function. OutputWithoutWhitespace() 
+outputs the string's characters except for whitespace (spaces, tabs).
+Note: A tab is '\t'. Call the OutputWithoutWhitespace() function in main().(2 pts) 
+
+Ex:
+
+Enter a sentence or phrase: The only thing we have to fear is fear itself.
+You entered: The only thing we have to fear is fear itself.
+
+Number of characters: 46
+String with no whitespace: Theonlythingwehavetofearisfearitself.
+
+
+//CODE BEGINS HERE
+#include <iostream>
+#include <string>
+using namespace std;
+
+//(2) Complete the GetNumOfCharacters() function, which returns the number of characters in the user's string. 
+//    We encourage you to use a for loop in this function.
+
+void GetNumOfCharacters(string str1) {
+   for (loop) {
+        size(str1);  //Number of characters in string 
+        cout << size;
+   }
+   
+   return size;
+}
+
+int main() {
+   /* Type your code here. */ 
+   string str1 = "";
+   int GetNumOfCharacters = 0;
+   int OutputWithWhitespace = 0;
+   int size = 0;
+   
+   //(1) Prompt the user to enter a string of their choosing. Output the string.
+   cout << "Enter a sentence or phrase: ";
+   cout << endl;
+   cout << "You entered: ";
+   getline(cin, str1);
+   cout << str1;
+   cout << endl;
+   
+   //(3) In main(), call the GetNumOfCharacters() function and then output the returned result.
+   GetNumOfCharacters(str1) = size;
+   
+   //(4) Implement the OutputWithoutWhitespace() function. OutputWithoutWhitespace() outputs the 
+   //    string's characters except for whitespace (spaces, tabs). Note: A tab is '\t'. 
+   //    Call the OutputWithoutWhitespace() function in main().
+   OutputWithWhitespace() {
+   }
+
+   return 0;
+}
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
