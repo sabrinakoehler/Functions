@@ -1,0 +1,99 @@
+Exercises in "Gentle Introduction"
+Chapter 8 - "Functions"
+
+Exercise 8.1: Functions can return a string, not just an int or a 
+float. Write a function called evenOrOdd which takes an integer
+parameter and returns either "Even" or "Odd" based on the value
+passed. In Main, prompt the user for a number, called num, then
+pass num to evenOrOdd and display the returned value on the screen.
+Keep doing this until the user enters a zero. Use the following run 
+as an example:
+
+Enter a number: 11
+Odd
+Enter a number: 12
+Even
+Enter a number: 13
+Odd
+Enter a number: 0
+
+#include <iostream> 
+#include <string> 
+using namespace std; 
+
+string evenOrOdd (int number) {
+    string answer;
+    if ((number % 2) == 0) {
+        answer = "Even";
+    }
+    else {
+        answer = "Odd";
+    }
+    return answer;
+}
+
+int main() { 
+   string answer; 
+   int number = 1; 
+   while (number != 0) {
+      cout << "Enter a number: "; 
+      cin >> number; 
+      cout << number; 
+      if (number != 0) { 
+         answer = evenOrOdd(number); 
+         cout << " is " << answer << endl; 
+      } 
+   }
+   cout << endl;
+   return 0; 
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
+
+Exercise 8.2: Create a function called sumTo which takes an integer 
+parameter and returns the total of all of the numbers from 1 to
+that number. For example, if the user entered a 5, the function
+would calculate 1 + 2 + 3 + 4 + 5 = 15. Keep prompting 
+the user for a number until a zero (0) is entered. Use the 
+following run as an example:
+
+Enter a number: 5
+15
+Enter a number: 25
+325
+Enter a number: 100
+5050
+Enter a number: 0
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int sumTo(int number) {
+    int counter = 1;
+    int total = 0;
+    while (counter <= number) {
+        total = total + counter;
+        counter = counter + 1;
+    }
+    return total;
+}
+
+int main () {
+    int answer;
+    int number = 1;
+    while (number != 0) {
+        cout<<"Enter a number: ";
+        cin>>number;
+        cout<<number;
+        if (number != 0) {
+            answer = sumTo(number);
+            cout<<" sums to " << answer << endl;
+        }
+    }
+    return 0;
+}
+
+/////////////////////////////////////////////////////////////////////
