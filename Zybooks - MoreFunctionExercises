@@ -1,0 +1,930 @@
+FUNCTIONS in ZYBOOKS
+
+12.1.3: Adding to the face printing program.
+
+
+#include <iostream>
+using namespace std;
+
+void PrintFaceB() {
+   char faceChar = 'o';
+   
+   cout << "  "  << faceChar << " " << faceChar << endl;         // Eyes
+   cout << "   " << faceChar << endl;                            // Nose
+   cout << "  "  << faceChar << faceChar << faceChar << endl;    // Mouth
+   return;
+}
+
+void PrintFaceA() {
+   char faceChar = '#';
+
+   cout << "  "  << faceChar << " " << faceChar << endl;         // Eyes
+   cout << "   " << faceChar << endl;                            // Nose
+   cout << "  "  << faceChar << faceChar << facharceChar << endl;    // Mouth
+
+   return;
+}
+
+int main() {
+   PrintFaceA();
+   PrintFaceB();
+   return 0;
+}
+
+OUTPUT:
+
+  # #
+   #
+  ###
+  o o
+   o
+  ooo
+
+//////////////////////////////////////////////////////////////////////////////////
+
+12.1.1: Basic function call Challenge Activity 
+Complete the function definition to print five asterisks ***** when called once 
+(do NOT print a newline). Output for sample program:
+
+**********
+
+#include <iostream>
+using namespace std;
+
+void PrintPattern() {
+
+   char patternChar = '*';
+  
+   cout << patternChar << patternChar << patternChar << patternChar << patternChar;         // *****
+   return;
+}
+
+int main() {
+   PrintPattern();
+   PrintPattern();
+   cout << endl;
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+12.1.2: Basic function call.
+Complete the PrintShape() function to print the following shape. End with newline.
+Example output: 
+***
+***
+***
+
+#include <iostream>
+using namespace std;
+
+void PrintShape() {
+
+   char shapeChar = '*';
+   
+   cout << shapeChar << shapeChar << shapeChar <<endl;        // ***
+   cout << shapeChar << shapeChar << shapeChar <<endl;        // ***
+   cout << shapeChar << shapeChar << shapeChar <<endl;        // ***
+   
+   return;
+}
+
+int main() {
+   PrintShape();
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+12.2.4: Multiple parameters Participation Activity
+Modify PrintFace() to have three parameters: char eyeChar, char noseChar, char mouthChar. 
+Call the function with arguments 'o', '*', and '#', which should draw this face:
+  o o  
+   *   
+  ###
+
+#include <iostream>
+using namespace std;
+void PrintFace(char eyeChar, char noseChar, char mouthChar) { // FIXED: Support 3 parameters
+  cout << "   "  << eyeChar << " " << eyeChar << endl;      // Eyes
+  cout << "    " << noseChar << endl;                         // Nose
+  cout << "   "  << mouthChar << mouthChar << mouthChar << endl; // Mouth
+  return;
+}
+int main() {
+  PrintFace('o','*', '#'); // FIXED: Pass 3 arguments
+
+  return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+12.2.2: Funciton call with parameter: Print tic-tac-toe board.
+Complete the PrintTicTacToe function with char parameters horizChar and vertChar 
+that prints a tic-tac-toe board with the characters as follows. End with newline. 
+Ex: PrintTicTacToe('~', '!') prints:
+x!x!x
+~~~~~
+x!x!x
+~~~~~
+x!x!x
+
+#include <iostream>
+using namespace std;
+
+void PrintTicTacToe(char horizChar, char vertChar) {
+
+   cout<< "x" << vertChar << "x" << vertChar << "x" << endl;
+   cout<< horizChar << horizChar << horizChar << horizChar << horizChar << endl;
+   cout<< "x" << vertChar << "x" << vertChar << "x" << endl;
+   cout<< horizChar << horizChar << horizChar << horizChar << horizChar << endl;
+   cout<< "x" << vertChar << "x" << vertChar << "x" << endl;
+
+   return;
+}
+
+int main() {
+   PrintTicTacToe('~', '!');
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+12.2.3: Function call with parameter: Printing formatted measurement.
+Define a function PrintFeetInchShort, with int parameters numFeet and numInches, 
+that prints using ' and " shorthand. Ex: PrintFeetInchShort(5, 8) prints:
+5' 8"
+
+#include <iostream>
+using namespace std;
+
+void PrintFeetInchShort (int numFeet, int numInches) {
+   cout << numFeet << "'" << " " << numInches << "\"";
+   return;   
+}
+
+int main() {
+   PrintFeetInchShort(5, 8);
+   cout << endl;
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+12.3 Return 
+
+#include <iostream>
+using namespace std;
+
+int ComputeSquare(int numToSquare) {
+   return numToSquare * numToSquare;
+}
+
+int main() {
+   int numSquared = 0;
+   numSquared = ComputeSquare(7);
+   cout << "7 squared is " << numSquared << endl;
+
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+12.3.1: Program with a function to convert height in feet/inches to centimeters
+
+#include <iostream>
+using namespace std;
+
+/* Converts a height in feet/inches to centimeters */
+double HeightFtInToCm(int heightFt, int heightIn) {
+   const double CM_PER_IN = 2.54;
+   const int    IN_PER_FT = 12;
+   int totIn = 0;
+   double cmVal = 0.0;
+   
+   totIn = (heightFt * IN_PER_FT) + heightIn; // Total inches
+   cmVal = totIn * CM_PER_IN;                 // Conv inch to cm
+   return cmVal;
+}
+
+int main() {
+   int userFt = 0;  // User defined feet
+   int userIn = 0;  // User defined inches
+   
+   // Prompt user for feet/inches
+   cout << "Enter feet: ";
+   cin >> userFt;
+   
+   cout << "Enter inches: ";
+   cin >> userIn;
+   
+   // Output converted feet/inches to cm result
+   cout << "Centimeters: ";
+   cout << HeightFtInToCm(userFt, userIn) << endl;
+   
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+12.3.2: Function call in expression. Challenge Activity
+
+Assign to maxSum the max of (numA, numB) PLUS the max of (numY, numZ). Use just one statement. 
+Hint: Call FindMax() twice in an expression. 
+
+#include <iostream>
+using namespace std;
+
+double FindMax(double num1, double num2) {
+   double maxVal = 0.0;
+
+   // Note: if-else statements need not be understood to complete this activity
+   if (num1 > num2) { // if num1 is greater than num2,
+      maxVal = num1;  // then num1 is the maxVal.
+   }
+   else {             // Otherwise,
+      maxVal = num2;  // num2 is the maxVal.
+   }
+   return maxVal;
+}
+
+int main() {
+   double numA = 5.0;
+   double numB = 10.0;
+   double numY = 3.0;
+   double numZ = 7.0;
+   double maxSum = 0.0;
+   
+   //maxSum = maxVal + maxVal  
+   maxSum = FindMax(numA, numB) + FindMax(numY, numZ);
+
+   cout << "maxSum is: " << maxSum << endl;
+
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+12.3.3: Function definition: Volume of a pyramid. Challenge Activity
+Define a function PyramidVolume with double parameters baseLength, baseWidth, 
+and pyramidHeight, that returns as a double the volume of a pyramid with a rectangular 
+base. Relevant geometry equations: 
+Volume = base area x height x 1/3 
+Base area = base length x base width. 
+(Watch out for integer division).
+
+#include <iostream>
+using namespace std;
+
+/* Your solution goes here  */
+double PyramidVolume(double baseLength, double baseWidth, double pyramidHeight) 
+{
+    return baseLength * baseWidth * pyramidHeight / 3;
+}
+
+int main() {
+   cout << "Volume for 1.0, 1.0, 1.0 is: " << PyramidVolume(1.0, 1.0, 1.0) << endl;
+   return 0;
+} 
+
+//////////////////////////////////////////////////////////////////////////////////
+
+12.4 Reasons for defining FUNCTIONS
+
+12.4.1: User-defined functions make main() easy to understand
+Zybooks example
+
+#include <iostream>
+using namespace std;
+
+// Function converts steps to feet walked
+int StepsToFeet(int baseSteps) {
+   const int FEET_PER_STEP = 3;  // Unit conversion
+   int feetTot = 0;              // Corresponding feet to steps
+   
+   feetTot = baseSteps * FEET_PER_STEP;
+   
+   return feetTot;
+}
+
+// Function converts steps to calories burned
+double StepsToCalories(int baseSteps) {
+   const double STEPS_PER_MINUTE = 70.0;            // Unit conversion
+   const double CALORIES_PER_MINUTE_WALKING = 3.5;  // Unit conversion
+   double minutesTot  = 0.0;                        // Corresponding min to steps
+   double caloriesTot = 0.0;                        // Corresponding calories to min
+   
+   minutesTot = baseSteps / STEPS_PER_MINUTE;
+   caloriesTot = minutesTot * CALORIES_PER_MINUTE_WALKING;
+   
+   return caloriesTot;
+}
+
+int main() {
+   int stepsInput = 0;        // User defined steps
+   int feetTot  = 0;          // Corresponding feet to steps
+   double caloriesTot = 0.0;  // Corresponding calories to steps
+   
+   // Prompt user for input
+   cout << "Enter number of steps walked: ";
+   cin >> stepsInput;
+   
+   // Call functions to convert steps to feet/calories
+   feetTot = StepsToFeet(stepsInput);
+   cout << "Feet: " << feetTot << endl;
+   
+   caloriesTot = StepsToCalories(stepsInput);
+   cout << "Calories: " << caloriesTot << endl;
+   
+   return 0;
+}
+/////////////////////////////////////////////////////////////////////////////////
+
+12.4.1 Function stubs: Statistics
+Define stubs for the functions called by the below main(). 
+Each stub should print "FIXME: Finish FunctionName()" followed by a newline, and 
+should return -1. Example output: 
+FIXME: Finish GetUserNum()
+FIXME: Finish GetUserNum()
+FIXME: Finish ComputeAvg()
+Avg: -1
+
+#include <iostream>
+using namespace std;
+
+int GetUserNum() {
+   cout << "FIXME: Finish GetUserNum()" << endl;
+   return -1;
+}
+
+int ComputeAvg(int userNum1, int userNum2 ) {
+   cout << "FIXME: Finish ComputeAvg()" << endl;
+   return -1;
+}
+
+int main() {
+   int userNum1 = 0;
+   int userNum2 = 0;
+   int avgResult = 0;
+
+   userNum1 = GetUserNum();
+   userNum2 = GetUserNum();
+
+   avgResult = ComputeAvg(userNum1, userNum2);
+
+   cout << "Avg: " << avgResult << endl;
+
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+12.4.2: Function stud used in incremental program development
+
+"Modular development means to divide a program into separate modules that can be 
+developed and tested separately and then integrated into a single program."
+
+Zybooks example
+
+#include <iostream>
+using namespace std;
+
+// Program calculates price of lumber. Hardwoods are sold
+// by the board foot (measure of volume, 12"x12"x1"). 
+
+// Function determines board foot based on lumber dimensions
+double CalcBoardFoot(double boardHeight, double boardLength,
+                     double boardThickness) {
+   
+   // board foot = (h * l * t)/144
+   cout << "FIXME: finish board foot calc" << endl;
+   
+   return 0;
+}
+
+// Function calculates price based on lumber type and quantity
+double CalcLumberPrice(int lumberType, double boardFoot) {
+   const double CHERRY_COST_BF = 6.75;  // Price of cherry per board foot
+   const double MAPLE_COST_BF = 10.75;  // Price of maple per board foot
+   const double WALNUT_COST_BF = 13.00; // Price of walnut per board foot
+   double lumberCost = 0.0;             // Total lumber cost
+   
+   // Determine cost of lumber based on type
+   switch (lumberType) {
+      case 0:
+         lumberCost = CHERRY_COST_BF;
+         break;
+      case 1:
+         lumberCost = MAPLE_COST_BF;
+         break;
+      case 2:
+         lumberCost = WALNUT_COST_BF;
+         break;
+      default:
+         lumberCost = -1.0;
+         break;
+   }
+   
+   lumberCost = lumberCost * boardFoot;
+   return lumberCost;
+}
+
+int main() {
+   double heightDim = 0.0;  // Board height
+   double lengthDim = 0.0;  // Board length
+   double thickDim = 0.0;   // Board thickness
+   int boardType = 0;       // Type of lumber
+   double boardFoot = 0.0;  // Volume of lumber
+   
+   // Prompt user for input
+   cout << "Enter lumber height (in):";
+   cin >> heightDim;
+   
+   cout << "Enter lumber length (in):";
+   cin >> lengthDim;
+   
+   cout << "Enter lumber width (in):";
+   cin >> thickDim;
+   
+   cout << "Enter lumber type (0: Cherry, 1: Maple, 2: Walnut):";
+   cin >> boardType;
+   
+   // Call functions to calculate lumber cost
+   boardFoot = CalcBoardFoot(heightDim, lengthDim,thickDim);
+   cout << "Cost of Lumber = $" << CalcLumberPrice(boardType, boardFoot) << endl;
+   
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+12.4.3: Function call from multiple locations in main 
+Zybooks example
+
+#include <iostream>
+using namespace std;
+
+// Program calculates X = | Y | + | Z |
+
+// Function returns the absolute value
+int AbsValueConv(int origValue) {
+   int absValue = 0;   // Resulting abs val
+   
+   if(origValue < 0){  // origVal is neg
+      absValue = -1 * origValue;
+   }
+   else{               // origVal is pos
+      absValue = origValue;
+   }
+   
+   return absValue;
+}
+
+
+int main() {
+   int userValue1 = 0; // First user value
+   int userValue2 = 0; // Second user value
+   int sumValue = 0;   // Resulting value
+   
+   // Prompt user for inputs
+   cout << "Enter first value: ";
+   cin >> userValue1;
+
+   cout << "Enter second value: ";
+   cin >> userValue2;
+
+   sumValue = AbsValueConv(userValue1) + AbsValueConv(userValue2);
+   cout << "Total: " << sumValue << endl;
+   
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+12.5.1: Function with branch: Popcorn
+Complete function PrintPopcornTime(), with int parameter bagOunces, and void return
+type. If bagOunces is less than 3, print "Too small". If greater than 10, print 
+"Too large". Otherwise, compute and print 6 * bagOunces followed by "seconds". 
+End with a newline. Example output for ounces = 7:
+42 seconds
+
+#include <iostream>
+using namespace std;
+
+void PrintPopcornTime(int bagOunces) {
+
+   if (bagOunces < 3) {
+      cout << "Too small" << endl;
+   }
+   else if (bagOunces > 10) {
+      cout << "Too large" << endl;
+   }
+   else {
+      cout << 6*bagOunces << " seconds" << endl;
+   }
+
+}
+
+int main() {
+   PrintPopcornTime(7);
+
+   return 0;
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+12.5.2: User-defined functions make main() easy to understand. 
+Zybooks example
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Function prompts user to enter postiive non-zero number
+int GetPositiveNumber() {
+   int userNum = 0;
+   
+   while (userNum <= 0) {
+      cout << "Enter a positive number (>0): " << endl;
+      cin >> userNum;
+      
+      if (userNum <= 0) {
+         cout << "Invalid number." << endl;
+      }
+   }
+
+   return userNum;
+}
+
+
+// Function returns greatest common divisor of two inputs
+int FindGCD(int aVal, int bVal) {
+   int numA = aVal;
+   int numB = bVal;
+   
+   while (numA != numB) { // Euclid's algorithm
+      if (numB > numA) {
+         numB = numB - numA;
+      }
+      else {
+         numA = numA - numB;
+      }
+   }
+   
+   return numA;
+}
+
+// Function returns least common multiple of two inputs
+int FindLCM(int aVal, int bVal) {
+   int lcmVal = 0;
+   
+   lcmVal = abs(aVal * bVal) / FindGCD(aVal, bVal);
+   
+   return lcmVal;
+}
+
+int main() {
+   int usrNumA = 0;
+   int usrNumB = 0;
+   int lcmResult = 0;
+   
+   cout << "Enter value for first input" << endl;
+   usrNumA = GetPositiveNumber();
+
+   cout << endl << "Enter value for second input" << endl;
+   usrNumB = GetPositiveNumber();
+   
+   lcmResult = FindLCM(usrNumA, usrNumB);
+   
+   cout << endl << "Least common multiple of " << usrNumA
+        << " and " << usrNumB << " is " << lcmResult << endl;
+   
+   return 0;
+}
+//////////////////////////////////////////////////////////////////////////////////
+
+12.5.2: Function with loop: PrintShampooInstructions
+Write a function PrintShampooInstructions(), with int parameter numCycles, 
+and void return type. If numCycles is less than 1, print "Too few.". If more than 
+4, print "Too many.". Else, print "N: Lather and rinse." numCycles times, where N 
+is the cycle number, followed by "Done.". End with a newline. Example output for 
+numCycles = 2:
+1: Lather and rinse.
+2: Lather and rinse.
+Done.
+ 
+Hint: Declare and use a loop variable.
+
+#include <iostream>
+using namespace std;
+
+/* Your solution goes here  */
+
+void PrintShampooInstructions(int numCycles) {
+   int N = 1;
+   
+   if (numCycles < 1) {
+      cout << "Too few." << endl;
+   } 
+   else if (numCycles > 4) {
+      cout << "Too many." << endl;
+   }
+   else {
+      while (N <= numCycles){
+         cout << N << ": Lather and rinse." << endl;
+         N++;
+      }
+      cout << "Done." << endl;
+   }
+   
+}
+
+
+int main() {
+   PrintShampooInstructions(2);
+
+   return 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+12.8.1: Problem 12.1 
+Ask the user for a number between 3 and 100 (inclusive). USING LOOPS, figure out what 
+is the largest power of 2 that is less than or equal to the number entered. 
+For example, if the user entered 6, answer would be 4. If the user entered 100,
+the answer would be 64. You must do this within a function called powerOfTwo. 
+For example:
+
+Please enter a number from 3 to 100: 100
+2, 4, 8, 16, 32, 64 
+The answer is 64
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int powerOfTwo(int num) {
+    int answer = 2;
+
+    while (answer < num) {
+        if (answer * 2 > num ){
+            cout << answer << endl;
+            return answer;
+        } else {
+        cout << answer << ", ";
+        answer = answer * 2;
+        }
+    }
+}
+
+int main()
+{
+
+    int num;
+    cout << "Please enter a number from 3 to 100: ";
+    cin >> num;
+    cout << num << endl;
+    if ((num < 3) || (num > 100))
+    {
+        cout << "Please follow the directions!" << endl;
+    }
+    else
+    {
+        int answer = powerOfTwo(num);
+        cout << "The answer is " << answer << endl;
+    }
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+12.9 Problem 12.2
+Play the rock paper scissors game. Two players enter either rock, paper, or scissors
+and the winner is determined as follows:
+paper covers rock
+rock breaks scissors
+scissors cut paper
+
+Ask the user if s/he wants to play again. BE SURE to include a function called 
+play as shown in the template.
+
+Sample run:
+
+Play rock, paper, scissors
+Player 1: rock
+Player 2: paper
+Player 2 wins -- Paper covers rock
+
+Do you want to continue? (yes or no): yes
+Player 1: scissors
+Player 2: rock
+Player 2 wins -- Rock breaks scissors
+
+Do you want to continue? (yes or no): no
+
+NOTE: You must include a function called play which plays the game and returns
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+/* Type your code here. */
+int play(string p1, string p2) {
+    string  paper = "paper";
+    string rock = "rock";
+    string scissors = "scissors";
+
+    //if both players draw same then nobody wins
+    if (p1 == p2) {
+        return 0;
+    }
+
+    //if player 1: paper and player 2: rock = player 1 wins
+    else if (p1 == paper && p2 == rock){
+        cout << "Paper covers rock" << endl;
+        return 1;
+    }
+    //if player 1: rock  and player 2: scissors = player 1 wins
+    else if (p1 == rock && p2 == scissors ){
+        cout << "Rock breaks scissors" << endl;
+        return 1;
+    }
+    //if player 1: scissors and  player 2: paper = player 1 wins
+    else if (p1 == scissors && p2 == paper )
+    {
+        cout << "Scissors cut paper" << endl;
+        return 1;
+    }
+
+    //player 2
+    //if player 1: rock and player 2: paper = player 2 wins
+    else if (p1 == rock && p2 == paper )
+    {
+        cout << "Paper covers rock" << endl;
+        return 2;
+    }
+    //if player 1: scissors  and player 2: rock = player 2 wins
+    else if (p1 == scissors && p2 == rock )
+    {
+        cout << "Rock breaks scissors" << endl;
+        return 2;
+    }
+    //if player 1: paper and  player 2: scissors = player 2 wins
+    else if (p1 == paper && p2 == scissors )
+    {
+        cout << "Scissors cut paper" << endl;
+        return 2;
+    }
+}
+
+int main()
+{
+    string p1, p2;
+    cout << "Play rock, paper, scissors\n";
+    string goOn = "yes";
+    while (goOn == "yes")
+    {
+        cout << "Player 1: ";
+        cin >> p1;
+        cout << p1 << endl;
+        cout << "Player 2: ";
+        cin >> p2;
+        cout << p2 << endl;
+        int winner = play(p1, p2);
+        if (winner == 0)
+            cout << "Draw!" << endl;
+        else if (winner == 1)
+            cout << "Player 1 wins!" << endl;
+        else if (winner == 2)
+            cout << "Player 2 wins!" << endl;
+        else
+            cout << "ACK! SOMETHING IS WRONG!" << endl;
+        cout << "Do you want to continue? (yes or no): ";
+        cin >> goOn;
+        cout << goOn << endl;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+12.10 Problem 12.3
+By definition, the first two numbers in the Fibonacci sequence are 0 and 1, and each 
+subsequent number is the sum of the previous two; for example, the first 6 Fibonacci
+ numbers are 0, 1, 1, 2, 3, 5. Write a program that asks the user for a number between 
+ 5 and 22 (inclusive) and then displays that many Fibonacci numbers. YOU MUST write a
+ function called fibonacci which is called from main as shown in the template. Note 
+ that the function adds up each of the Fibonacci numbers and returns the last one to main. 
+ Add a newline every 10th output value. For example:
+
+Please enter a number between 5 and 22: 12
+0 1 1 2 3 5 8 13 21 34 
+55 89 
+Fibonacci # 12 is 144
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <math.h>
+using namespace std;
+
+// YOUR CODE GOES HERE
+int fibonacci(int num){
+  int firstNum = 0;
+  int secondNum = 1; 
+  int nextNum;
+
+    // Starts index at 2 because first and second numbers are preassigned
+  for (int i = 1; i <= num; i++)
+  {
+    if ((i - 1) % 10 == 0) {
+        cout << endl;
+    }
+    
+    if(i == 1){
+        cout << firstNum << " ";
+        continue;
+    }
+    if(i == 2){
+        cout << secondNum << " ";
+        continue;
+    }
+    nextNum = firstNum + secondNum;
+    firstNum = secondNum;
+    secondNum = nextNum;
+
+    cout << secondNum << " ";
+  }
+  return secondNum + firstNum;
+}
+
+int main()
+{
+	int num;
+	int fibb;
+	cout << "Please enter a number between 5 and 22: ";
+	cin >> num;
+	cout << num << endl;
+	if ((num < 5) || (num > 22))
+		cout << "Please follow the directions!" << endl;
+	else {
+		fibb = fibonacci(num);
+		cout << endl;
+		cout << "Fibonacci # " << num << " is " << fibb << endl;
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+12.11.1: Problem 12.4
+Ask the user for a number between 2 and 1000. Using a loop, calculate the integer 
+square root by calculating the square of every number from 1 until the square of the 
+number is more than the number entered. The previous number is the integer square root. 
+You must write a function called intSqrRoot which calculates the answer and returns it to main. 
+See the template given. Sample run:
+
+
+
+#include <iostream>
+using namespace std;
+#include "math.h"
+
+/* Type your code here. */
+int intSqrRoot(int num){
+    //declare variables
+    int result = 1;
+    int base = 1;
+    // first iteration will always be [1]
+    cout << "[" << sqrt(result) << "]";
+    // loop until the result is greater than user input
+    while (result < num){
+        // we are checkng one iteration further so we know to continue or not
+        if ((result = (base + 1) * (base + 1)) > num) {
+            cout << endl;
+            break;
+        }
+        // print current result in brackets and set new variable values for next loop iteration
+        cout << "[" << (sqrt(result)) - 1 << "]";
+        result = base * base;
+        base++;
+    }
+    // return minus 1 
+    return (sqrt(result)) - 1;
+}
+   
+int main()
+{
+	int num;
+	cout << "Please enter a number between 2 and 1000: ";
+	cin >> num;
+	cout << num << endl;
+	if ((num < 1) || (num > 1000))
+		cout << "Please follow the directions!" << endl;
+	else {
+		int answer;
+		answer = intSqrRoot(num);
+		cout << "The integer square root of ";
+		cout << num;
+		cout << " is ";
+		cout << answer;
+		cout << ".";
+		cout << endl;
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
