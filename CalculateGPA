@@ -1,0 +1,120 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   float class1 = 0.0;
+   float class2 = 0.0;
+   float class3 = 0.0;
+   float class4 = 0.0;
+   float class5 = 0.0; 
+
+   int classcredit1 = 0;
+   int classcredit2 = 0;
+   int classcredit3 = 0;
+   int classcredit4 = 0;
+   int classcredit5 = 0;
+   
+   float totalPoints = 0;
+   float totalGPA = 0.0;
+   float creditHours = 0.0;
+   
+//INPUTS
+cin >> class1;
+cin >> classcredit1;
+cin >> class2;
+cin >> classcredit2;
+cin >> class3;
+cin >> classcredit3;
+cin >> class4;
+cin >> classcredit4;
+cin >> class5;
+cin >> classcredit5;
+
+
+//OUTPUTS
+//Class 1 
+cout << "Enter grade for class 1: " << class1 << endl;
+cout << "Enter credits for class 1: " << classcredit1 << endl;
+
+//Class 2 
+cout << "Enter grade for class 2: " << class2 << endl;
+cout << "Enter credits for class 2: " << classcredit2 << endl;
+
+//Class 3
+cout << "Enter grade for class 3: " << class3 << endl;
+cout << "Enter credits for class 3: " << classcredit3 << endl;
+
+//Class 4
+cout << "Enter grade for class 4: " << class4 << endl;
+cout << "Enter credits for class 4: " << classcredit4 << endl;
+
+//Class 5
+cout << "Enter grade for class 5: " << class5 << endl;
+cout << "Enter credits for class 5: " << classcredit5 << endl;
+
+//Credits * Grade = Points for each class
+//Add up points for each class to get Total Points
+totalPoints = (class1 * classcredit1) + (class2 * classcredit2) + (class3 * classcredit3) + (class4 * classcredit4) + (class5 * classcredit5);
+
+//Add up credit hours for all five classes
+creditHours = classcredit1 + classcredit2 + classcredit3 + classcredit4 + classcredit5;
+
+//Add all class grades then 
+//divide by number of classes (5) to get GPA 
+totalGPA = totalPoints / creditHours;
+
+cout << "Your total points: " << totalPoints << endl;
+cout << "Your GPA: " << totalGPA << endl;
+
+return 0;
+}
+
+
+Example run:
+4
+1
+3.67
+3
+3.33
+3
+3
+3
+2.67
+3
+
+Input sample 1:
+3.33
+4
+3.67
+3
+3.67
+2
+2.67
+2
+3.67
+4
+
+Input sample 2:
+2.67
+2
+2.67
+4
+1
+3
+3.0
+4
+2.33
+4
+
+Input sample 3:
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
